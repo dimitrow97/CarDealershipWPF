@@ -5,11 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CarDealership.App"
         mc:Ignorable="d"
-        Title="TrueSlavs ||| Car Dealership" Height="411.194" Width="525">
-    <Grid>
+        Title="TrueSlavs ||| Car Dealership" Height="358.103" Width="852.914">
+    <Grid Margin="0,0,3.4,0.4">
         <TextBlock x:Name="textBlock" HorizontalAlignment="Center" Margin="42,25,43.4,0" Text="Welcome to the TrueSlavs ||| Car Catalog" VerticalAlignment="Top" Height="27" Width="433" FontFamily="Copperplate Gothic Light" RenderTransformOrigin="0.501,0.613" FontSize="18" TextWrapping="Wrap" TextAlignment="Center"/>
-        <Button x:Name="button" Content="Continue to the catalog" HorizontalAlignment="Left" Height="42" Margin="284,322,0,0" VerticalAlignment="Top" Width="191" BorderThickness="2" Background="#FFD8D8D8" Foreground="Black" FontFamily="Century Gothic"/>
+        <Button x:Name="button" Content="Login" HorizontalAlignment="Left" Height="66" Margin="537,222,0,0" VerticalAlignment="Top" Width="100" BorderThickness="2" Background="#FFD8D8D8" Foreground="Black" FontFamily="Century Gothic"/>
         <Image x:Name="image" HorizontalAlignment="Left" Height="249" Margin="76,57,0,0" VerticalAlignment="Top" Width="368" Source="Images/MainPageImg.jpg"/>
-        
+        <Label x:Name="label" Content="Username" HorizontalAlignment="Left" Margin="537,80,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.681,0.081" Width="223" FontFamily="Copperplate Gothic Light" FontSize="16"/>
+        <Label x:Name="label_Copy" Content="Password" HorizontalAlignment="Left" Margin="537,140,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.681,0.081" Width="223" FontFamily="Copperplate Gothic Light" FontSize="16"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="28" Margin="537,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223"/>
+        <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="28" Margin="537,167,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223"/>
+        <Button x:Name="button_Copy" Content="Sign Up" HorizontalAlignment="Left" Height="66" Margin="660,222,0,0" VerticalAlignment="Top" Width="100" BorderThickness="2" Background="#FFD8D8D8" Foreground="Black" FontFamily="Century Gothic"/>
+
     </Grid>
 </Window>
