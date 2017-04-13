@@ -1,0 +1,14 @@
+C:\Users\dimit\Desktop\CarDealership\CarDealership.App\bin\Debug\CarDealership.App.exe.config
+C:\Users\dimit\Desktop\CarDealership\CarDealership.App\bin\Debug\CarDealership.App.exe
+C:\Users\dimit\Desktop\CarDealership\CarDealership.App\bin\Debug\CarDealership.App.pdb
+C:\Users\dimit\Desktop\CarDealership\CarDealership.App\obj\Debug\CarDealership.App.csprojResolveAssemblyReference.cache
+C:\Users\dimit\Desktop\CarDealership\CarDealership.App\obj\Debug\MainWindow.g.cs
+C:\Users\dimit\Desktop\CarDealership\CarDealership.App\obj\Debug\App.g.cs
+C:\Users\dimit\Desktop\CarDealership\CarDealership.App\obj\Debug\CarDealership.App_MarkupCompile.cache
+C:\Users\dimit\Desktop\CarDealership\CarDealership.App\obj\Debug\CarDealership.App_MarkupCompile.lref
+C:\Users\dimit\Desktop\CarDealership\CarDealership.App\obj\Debug\MainWindow.baml
+C:\Users\dimit\Desktop\CarDealership\CarDealership.App\obj\Debug\CarDealership.App.g.resources
+C:\Users\dimit\Desktop\CarDealership\CarDealership.App\obj\Debug\CarDealership.App.Properties.Resources.resources
+C:\Users\dimit\Desktop\CarDealership\CarDealership.App\obj\Debug\CarDealership.App.csproj.GenerateResource.Cache
+C:\Users\dimit\Desktop\CarDealership\CarDealership.App\obj\Debug\CarDealership.App.exe
+C:\Users\dimit\Desktop\CarDealership\CarDealership.App\obj\Debug\CarDealership.App.pdb
