@@ -1,0 +1,30 @@
+﻿<Window x:Class="CarDealership.App.RegisterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CarDealership.App"
+        mc:Ignorable="d"
+        Title="Create Account" Height="630.59" Width="541.543">
+    <Grid Margin="0,0,0,0">
+        <TextBox x:Name="textBoxUsername" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180" Margin="0,57,0,0" FontSize="14"/>
+        <TextBox x:Name="textBoxEmail" HorizontalAlignment="Center" Height="23" Margin="0,356,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180" FontSize="14"/>
+        <TextBox x:Name="textBoxPhone" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180" Margin="0,416,0,0" FontSize="14"/>
+        <Label x:Name="label" Content="Username" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,25,0,0" FontFamily="Copperplate Gothic Light" FontSize="16" Width="100"/>
+        <Label x:Name="label1" Content="Password" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,85,0,0" FontFamily="Copperplate Gothic Light" FontSize="16" Width="100"/>
+        <Label x:Name="label2" Content="Confirm Password" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,144,0,0" FontFamily="Copperplate Gothic Light" FontSize="16" Width="176"/>
+        <Label x:Name="label3" Content="E-Mail" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,324,0,0" FontFamily="Copperplate Gothic Light" FontSize="16" Width="62"/>
+        <Label x:Name="label4" Content="Phone Number" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,384,0,0" FontFamily="Copperplate Gothic Light" FontSize="16" Width="138"/>
+        <Button x:Name="button" Content="Sign Up" HorizontalAlignment="Center" VerticalAlignment="Top" Width="138" Margin="0,476,0,0" Height="40" FontFamily="Copperplate Gothic Light" FontSize="16" Click="button_Click"/>
+        <Label x:Name="label5" Content="First Name" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,204,0,0" FontFamily="Copperplate Gothic Light" FontSize="16"/>
+        <Label x:Name="label6" Content="Last Name" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,264,0,0" FontFamily="Copperplate Gothic Light" FontSize="16"/>
+        <TextBox x:Name="textBoxFirstName" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180" Margin="0,236,0,0" FontSize="14"/>
+        <TextBox x:Name="textBoxLastName" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180" Margin="0,296,0,0" FontSize="14"/>
+        <PasswordBox x:Name="passwordBox1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,121,0,0" Width="180" Height="23"/>
+        <PasswordBox x:Name="passwordBox2" HorizontalAlignment="Center" VerticalAlignment="Top" Height="23" Margin="0,181,0,0" Width="180"/>
+        <TextBlock Height="24" HorizontalAlignment="Center" Margin="0,534,0,0" x:Name ="errormessage" VerticalAlignment="Top" Width="Auto"  OpacityMask="#FFF11742" Foreground="#FFE52C2C" />
+
+
+
+    </Grid>
+</Window>

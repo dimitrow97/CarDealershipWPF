@@ -1,0 +1,5 @@
+D:\CAR DEALER\CarDealershipWPF\CarDealership.Models\bin\Debug\CarDealership.Models.dll
+D:\CAR DEALER\CarDealershipWPF\CarDealership.Models\bin\Debug\CarDealership.Models.pdb
+D:\CAR DEALER\CarDealershipWPF\CarDealership.Models\obj\Debug\CarDealership.Models.csprojResolveAssemblyReference.cache
+D:\CAR DEALER\CarDealershipWPF\CarDealership.Models\obj\Debug\CarDealership.Models.dll
+D:\CAR DEALER\CarDealershipWPF\CarDealership.Models\obj\Debug\CarDealership.Models.pdb

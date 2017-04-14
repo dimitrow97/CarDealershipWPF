@@ -1,0 +1,12 @@
+D:\CAR DEALER\CarDealershipWPF\CarDealership.Data\bin\Debug\CarDealership.Data.dll.config
+D:\CAR DEALER\CarDealershipWPF\CarDealership.Data\bin\Debug\CarDealership.Data.dll
+D:\CAR DEALER\CarDealershipWPF\CarDealership.Data\bin\Debug\CarDealership.Data.pdb
+D:\CAR DEALER\CarDealershipWPF\CarDealership.Data\bin\Debug\CarDealership.Models.dll
+D:\CAR DEALER\CarDealershipWPF\CarDealership.Data\bin\Debug\EntityFramework.dll
+D:\CAR DEALER\CarDealershipWPF\CarDealership.Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\CAR DEALER\CarDealershipWPF\CarDealership.Data\bin\Debug\CarDealership.Models.pdb
+D:\CAR DEALER\CarDealershipWPF\CarDealership.Data\bin\Debug\EntityFramework.xml
+D:\CAR DEALER\CarDealershipWPF\CarDealership.Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\CAR DEALER\CarDealershipWPF\CarDealership.Data\obj\Debug\CarDealership.Data.csprojResolveAssemblyReference.cache
+D:\CAR DEALER\CarDealershipWPF\CarDealership.Data\obj\Debug\CarDealership.Data.dll
+D:\CAR DEALER\CarDealershipWPF\CarDealership.Data\obj\Debug\CarDealership.Data.pdb
