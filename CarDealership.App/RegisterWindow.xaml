@@ -20,8 +20,8 @@
         <Label x:Name="label6" Content="Last Name" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,264,0,0" FontFamily="Copperplate Gothic Light" FontSize="16"/>
         <TextBox x:Name="textBoxFirstName" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180" Margin="0,236,0,0" FontSize="14"/>
         <TextBox x:Name="textBoxLastName" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180" Margin="0,296,0,0" FontSize="14"/>
-        <PasswordBox x:Name="passwordBox1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,121,0,0" Width="180" Height="23"/>
-        <PasswordBox x:Name="passwordBox2" HorizontalAlignment="Center" VerticalAlignment="Top" Height="23" Margin="0,181,0,0" Width="180"/>
+        <PasswordBox x:Name="passwordBox1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,121,0,0" Width="180" Height="23" PasswordChar="*"/>
+        <PasswordBox x:Name="passwordBox2" HorizontalAlignment="Center" VerticalAlignment="Top" Height="23" Margin="0,181,0,0" Width="180" PasswordChar="*"/>
         <TextBlock Height="24" HorizontalAlignment="Center" Margin="0,534,0,0" x:Name ="errormessage" VerticalAlignment="Top" Width="Auto"  OpacityMask="#FFF11742" Foreground="#FFE52C2C" />
 
 

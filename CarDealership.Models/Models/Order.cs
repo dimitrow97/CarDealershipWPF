@@ -31,5 +31,6 @@ namespace CarDealership.Models.Models
         public DateTime OrderPlacedOn { get; set; }
         public string IsOrderFinished { get; set; }
         public Customer OrderedBy { get; set; }
+        public Owner TakenBy { get; set; }
     }
 }

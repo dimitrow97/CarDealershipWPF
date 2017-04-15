@@ -10,3 +10,15 @@ D:\CAR DEALER\CarDealershipWPF\CarDealership.Data\bin\Debug\EntityFramework.SqlS
 D:\CAR DEALER\CarDealershipWPF\CarDealership.Data\obj\Debug\CarDealership.Data.csprojResolveAssemblyReference.cache
 D:\CAR DEALER\CarDealershipWPF\CarDealership.Data\obj\Debug\CarDealership.Data.dll
 D:\CAR DEALER\CarDealershipWPF\CarDealership.Data\obj\Debug\CarDealership.Data.pdb
+C:\Users\dimit\Desktop\CarDealership\CarDealershipWPF\CarDealership.Data\bin\Debug\CarDealership.Data.dll.config
+C:\Users\dimit\Desktop\CarDealership\CarDealershipWPF\CarDealership.Data\bin\Debug\CarDealership.Data.dll
+C:\Users\dimit\Desktop\CarDealership\CarDealershipWPF\CarDealership.Data\bin\Debug\CarDealership.Data.pdb
+C:\Users\dimit\Desktop\CarDealership\CarDealershipWPF\CarDealership.Data\bin\Debug\CarDealership.Models.dll
+C:\Users\dimit\Desktop\CarDealership\CarDealershipWPF\CarDealership.Data\bin\Debug\EntityFramework.dll
+C:\Users\dimit\Desktop\CarDealership\CarDealershipWPF\CarDealership.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\dimit\Desktop\CarDealership\CarDealershipWPF\CarDealership.Data\bin\Debug\CarDealership.Models.pdb
+C:\Users\dimit\Desktop\CarDealership\CarDealershipWPF\CarDealership.Data\bin\Debug\EntityFramework.xml
+C:\Users\dimit\Desktop\CarDealership\CarDealershipWPF\CarDealership.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\dimit\Desktop\CarDealership\CarDealershipWPF\CarDealership.Data\obj\Debug\CarDealership.Data.csprojResolveAssemblyReference.cache
+C:\Users\dimit\Desktop\CarDealership\CarDealershipWPF\CarDealership.Data\obj\Debug\CarDealership.Data.dll
+C:\Users\dimit\Desktop\CarDealership\CarDealershipWPF\CarDealership.Data\obj\Debug\CarDealership.Data.pdb
