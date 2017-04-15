@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\dimit\Desktop\CarDealership\CarDealership.App\obj\Debug\
+D:\CarDealerProject\CarDealershipWPF\CarDealership.App\obj\Debug\
 CarDealership.App
 none
 false
 DEBUG;TRACE
-C:\Users\dimit\Desktop\CarDealership\CarDealership.App\App.xaml
-11151548125
+D:\CarDealerProject\CarDealershipWPF\CarDealership.App\App.xaml
+21019166891
 
-5-2017746502
+61099588017
 13738642453
-MainWindow.xaml;
+MainWindow.xaml;RegisterWindow.xaml;
 
 False
 

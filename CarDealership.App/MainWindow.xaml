@@ -14,7 +14,7 @@
         <Label x:Name="label_Copy" Content="Password" HorizontalAlignment="Left" Margin="537,140,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.681,0.081" Width="223" FontFamily="Copperplate Gothic Light" FontSize="16"/>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="28" Margin="537,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223"/>
         <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="28" Margin="537,167,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223"/>
-        <Button x:Name="button_Copy" Content="Sign Up" HorizontalAlignment="Left" Height="66" Margin="660,222,0,0" VerticalAlignment="Top" Width="100" BorderThickness="2" Background="#FFD8D8D8" Foreground="Black" FontFamily="Century Gothic"/>
+        <Button x:Name="button_Copy" Content="Sign Up" HorizontalAlignment="Left" Height="66" Margin="660,222,0,0" VerticalAlignment="Top" Width="100" BorderThickness="2" Background="#FFD8D8D8" Foreground="Black" FontFamily="Century Gothic" Click="button_Copy_Click"/>
 
     </Grid>
 </Window>

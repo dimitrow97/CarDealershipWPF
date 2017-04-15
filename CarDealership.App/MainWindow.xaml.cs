@@ -24,5 +24,11 @@ namespace CarDealership.App
         {
             InitializeComponent();
         }
+
+        private void button_Copy_Click(object sender, RoutedEventArgs e)
+        {
+            RegisterWindow win2 = new RegisterWindow();
+            win2.Show();
+        }
     }
 }
