@@ -8,3 +8,8 @@ C:\Users\dimit\Desktop\CarDealership\CarDealershipWPF\CarDealership.Models\bin\D
 C:\Users\dimit\Desktop\CarDealership\CarDealershipWPF\CarDealership.Models\obj\Debug\CarDealership.Models.csprojResolveAssemblyReference.cache
 C:\Users\dimit\Desktop\CarDealership\CarDealershipWPF\CarDealership.Models\obj\Debug\CarDealership.Models.dll
 C:\Users\dimit\Desktop\CarDealership\CarDealershipWPF\CarDealership.Models\obj\Debug\CarDealership.Models.pdb
+D:\CarDealerProject\CarDealershipWPF\CarDealership.Models\bin\Debug\CarDealership.Models.dll
+D:\CarDealerProject\CarDealershipWPF\CarDealership.Models\bin\Debug\CarDealership.Models.pdb
+D:\CarDealerProject\CarDealershipWPF\CarDealership.Models\obj\Debug\CarDealership.Models.csprojResolveAssemblyReference.cache
+D:\CarDealerProject\CarDealershipWPF\CarDealership.Models\obj\Debug\CarDealership.Models.dll
+D:\CarDealerProject\CarDealershipWPF\CarDealership.Models\obj\Debug\CarDealership.Models.pdb

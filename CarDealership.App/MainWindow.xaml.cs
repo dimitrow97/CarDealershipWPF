@@ -23,35 +23,38 @@ namespace CarDealership.App
         {
             InitializeComponent();            
             CarDealershipContext context = new CarDealershipContext();
-            //context.Database.Initialize(force: true);
+        //    context.Database.Initialize(force: true);
 
-            //Owner zhu = new Owner()
-            //{
-            //    FirstName = "Zhulian",
-            //    LastName = "Dimitrov",
-            //    Username = "dimitrow97",
-            //    Password = "123456",
-            //    Email = "dimitrow00@gmail.com",
-            //    PhoneNumber = "0883552353"
-            //};
-            //context.Owners.Add(zhu);   
-            //Owner paco = new Owner()
-            //{
-            //    FirstName = "Plamen",
-            //    LastName = "Parushev",
-            //    Username = "paco",
-            //    Password = "654321",
-            //    Email = "paco@gmail.com",
-            //    PhoneNumber = "0883641267"
-            //};
-            //context.Owners.Add(paco);
-            //context.SaveChanges();
+        //    Owner zhu = new Owner()
+        //    {
+       //         FirstName = "Zhulian",
+         //       LastName = "Dimitrov",
+          //      Username = "dimitrow97",
+          //      Password = "123456",
+          //      Email = "dimitrow00@gmail.com",
+          //      PhoneNumber = "0883552353"
+         //   };
+         //   context.Owners.Add(zhu);   
+        //    Owner paco = new Owner()
+         //   {
+         //       FirstName = "Plamen",
+         //       LastName = "Parushev",
+         //       Username = "paco",
+          //      Password = "654321",
+           //     Email = "paco@gmail.com",
+          //      PhoneNumber = "0883641267"
+       //     };
+        //    context.Owners.Add(paco);
+        //    context.SaveChanges();
         }
 
         private void button_Copy_Click(object sender, RoutedEventArgs e)
         {
+            
             RegisterWindow win2 = new RegisterWindow();
             win2.Show();
+            Close();
+
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
@@ -68,6 +71,7 @@ namespace CarDealership.App
                     var password = context.Owners.Where(x => x.Username == this.textBox.Text).Select(y => y.Password).FirstOrDefault();
                     if (password == this.passwordBox.Password)
                     {
+                        Close();
                         mainMenuForm.Show();                        
                     }
                     else
@@ -81,6 +85,7 @@ namespace CarDealership.App
                     var password = context.Customers.Where(x => x.Username == this.textBox.Text).Select(y => y.Password).FirstOrDefault();
                     if (password == this.passwordBox.Password)
                     {
+                        Close();
                         mainMenuForm.Show();
                     }
                     else

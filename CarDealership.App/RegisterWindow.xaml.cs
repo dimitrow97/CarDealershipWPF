@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CarDealership.Data;
+using CarDealership.Models.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,8 +12,10 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Text.RegularExpressions;
+
 
 namespace CarDealership.App
 {
@@ -134,23 +138,78 @@ namespace CarDealership.App
             }
 
             else if (textBoxPhone.Text.Length == 0)
-
+                
             {
                 errormessage.Text = "Enter a Phone Number !";
-
+                
                 textBoxPhone.Focus();
             }
-
-            else if (!Regex.IsMatch(textBoxPhone.Text, "^[0-9]{8-12}$"))
-
+            
+             else if (!Regex.IsMatch(textBoxPhone.Text, @"^-*[0-9,\.]+$"))
+                
             {
                 errormessage.Text = "Enter a valid Phone Number !";
-
+                
                 textBoxPhone.Focus();
+                
+             }
 
+          
+
+            else 
+            {
+                CarDealershipContext context = new CarDealershipContext();
+
+
+                var userNameFromDb = context.Customers.Select(x => x.Username).ToList();
+                var emailFromDb = context.Customers.Select(x => x.Email).ToList();
+                var phoneFromDb = context.Customers.Select(x => x.PhoneNumber).ToList();
+
+
+                
+
+                if (userNameFromDb.Contains(textBoxUsername.Text))
+                {
+                    errormessage.Text = "Username already exists !";
+                    textBoxUsername.Focus();
+                }
+
+                else if (emailFromDb.Contains(textBoxEmail.Text))
+                {
+                    errormessage.Text = "E-mail already exists !";
+                    textBoxEmail.Focus();
+                }
+
+                else if (phoneFromDb.Contains(textBoxPhone.Text))
+                {
+                    errormessage.Text = "Telephone number already exists !";
+                    textBoxPhone.Focus();
+                }
+
+                else
+                {
+                    Customer customer = new Customer()
+                    {
+                        Username = textBoxUsername.Text,
+                        Email = textBoxEmail.Text,
+                        Password = passwordBox1.Password,
+                        FirstName = textBoxFirstName.Text,
+                        LastName = textBoxLastName.Text,
+                        PhoneNumber = textBoxPhone.Text
+
+                    };
+
+                    context.Customers.Add(customer);
+                    context.SaveChanges();
+
+                    
+                    MessageBox.Show("You have Registered successfully.");
+                    MainWindow win = new MainWindow();
+                    win.Show();
+                    Close();
+                }
             }
-
-        }
-        }
-    }
+         }
+      }
+   }
 

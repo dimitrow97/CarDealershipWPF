@@ -22,3 +22,15 @@ C:\Users\dimit\Desktop\CarDealership\CarDealershipWPF\CarDealership.Data\bin\Deb
 C:\Users\dimit\Desktop\CarDealership\CarDealershipWPF\CarDealership.Data\obj\Debug\CarDealership.Data.csprojResolveAssemblyReference.cache
 C:\Users\dimit\Desktop\CarDealership\CarDealershipWPF\CarDealership.Data\obj\Debug\CarDealership.Data.dll
 C:\Users\dimit\Desktop\CarDealership\CarDealershipWPF\CarDealership.Data\obj\Debug\CarDealership.Data.pdb
+D:\CarDealerProject\CarDealershipWPF\CarDealership.Data\bin\Debug\CarDealership.Data.dll.config
+D:\CarDealerProject\CarDealershipWPF\CarDealership.Data\bin\Debug\CarDealership.Data.dll
+D:\CarDealerProject\CarDealershipWPF\CarDealership.Data\bin\Debug\CarDealership.Data.pdb
+D:\CarDealerProject\CarDealershipWPF\CarDealership.Data\bin\Debug\CarDealership.Models.dll
+D:\CarDealerProject\CarDealershipWPF\CarDealership.Data\bin\Debug\EntityFramework.dll
+D:\CarDealerProject\CarDealershipWPF\CarDealership.Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\CarDealerProject\CarDealershipWPF\CarDealership.Data\bin\Debug\CarDealership.Models.pdb
+D:\CarDealerProject\CarDealershipWPF\CarDealership.Data\bin\Debug\EntityFramework.xml
+D:\CarDealerProject\CarDealershipWPF\CarDealership.Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\CarDealerProject\CarDealershipWPF\CarDealership.Data\obj\Debug\CarDealership.Data.csprojResolveAssemblyReference.cache
+D:\CarDealerProject\CarDealershipWPF\CarDealership.Data\obj\Debug\CarDealership.Data.dll
+D:\CarDealerProject\CarDealershipWPF\CarDealership.Data\obj\Debug\CarDealership.Data.pdb
