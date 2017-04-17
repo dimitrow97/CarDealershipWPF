@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CarDealership.App"
         mc:Ignorable="d"
-        Title="MainMenu" Height="600" Width="1100">
+        Title="MainMenu" Height="595.2" Width="1135.2">
     <Grid>
-        
+        <Button x:Name="ShowCars" Content="Show Cars" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="105" Height="33" Click="ShowCars_Click"/>
+        <Button x:Name="PlaceOrder" Content="Order" HorizontalAlignment="Left" Margin="131,10,0,0" VerticalAlignment="Top" Width="105" Height="33" Click="PlaceOrder_Click" Visibility="Hidden"/>
+        <Button x:Name="MyOrders" HorizontalAlignment="Left" Margin="252,10,0,0" VerticalAlignment="Top" Width="105" Height="33" Click="MyOrders_Click" Content="My Orders" Visibility="Hidden"/>
+        <DataGrid x:Name="dataGrid" Margin="10,48,9.8,10.4" ItemsSource="{Binding}" AutoGenerateColumns="True" MinColumnWidth="178" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" GridLinesVisibility="Horizontal"/>
+        <Button x:Name="AddNewCar" Content="Add New Car" HorizontalAlignment="Left" Margin="131,10,0,0" VerticalAlignment="Top" Width="105" Height="33" Click="AddNewCar_Click" Visibility="Hidden"/>
+        <Button x:Name="CheckOrders" Content="Check Orders" HorizontalAlignment="Left" VerticalAlignment="Top" Width="105" Margin="252,10,0,0" Height="33" Click="button_Click" Visibility="Hidden"/>
+
     </Grid>
 </Window>

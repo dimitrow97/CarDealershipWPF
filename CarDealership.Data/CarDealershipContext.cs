@@ -13,5 +13,6 @@ namespace CarDealership.Data
         public virtual DbSet<Car> Cars { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<CarPhoto> CarPhotos { get; set; }
     }
 }
