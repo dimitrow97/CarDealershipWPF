@@ -8,11 +8,38 @@
         Title="MainMenu" Height="595.2" Width="1135.2">
     <Grid>
         <Button x:Name="ShowCars" Content="Show Cars" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="105" Height="33" Click="ShowCars_Click"/>
-        <Button x:Name="PlaceOrder" Content="Order" HorizontalAlignment="Left" Margin="131,10,0,0" VerticalAlignment="Top" Width="105" Height="33" Click="PlaceOrder_Click" Visibility="Hidden"/>
-        <Button x:Name="MyOrders" HorizontalAlignment="Left" Margin="252,10,0,0" VerticalAlignment="Top" Width="105" Height="33" Click="MyOrders_Click" Content="My Orders" Visibility="Hidden"/>
+        <Button x:Name="PlaceOrder" Content="Order" HorizontalAlignment="Left" Margin="131,10,0,0" VerticalAlignment="Top" Width="105" Height="33" Click="PlaceOrder_Click"  />
+        <Button x:Name="MyOrders" HorizontalAlignment="Left" Margin="252,10,0,0" VerticalAlignment="Top" Width="105" Height="33" Click="MyOrders_Click" Content="My Orders" />
         <DataGrid x:Name="dataGrid" Margin="10,48,9.8,10.4" ItemsSource="{Binding}" AutoGenerateColumns="True" MinColumnWidth="178" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" GridLinesVisibility="Horizontal"/>
-        <Button x:Name="AddNewCar" Content="Add New Car" HorizontalAlignment="Left" Margin="131,10,0,0" VerticalAlignment="Top" Width="105" Height="33" Click="AddNewCar_Click" Visibility="Hidden"/>
-        <Button x:Name="CheckOrders" Content="Check Orders" HorizontalAlignment="Left" VerticalAlignment="Top" Width="105" Margin="252,10,0,0" Height="33" Click="button_Click" Visibility="Hidden"/>
+        <Button x:Name="AddNewCar" Content="Add New Car" HorizontalAlignment="Left" Margin="515,10,0,0" VerticalAlignment="Top" Width="105" Height="33" Click="AddNewCar_Click" />
+        <Button x:Name="CheckOrders" Content="Check Orders" HorizontalAlignment="Left" VerticalAlignment="Top" Width="105" Margin="383,10,0,0" Height="33" Click="button_Click" />
+        <Grid x:Name="OrderGrid" HorizontalAlignment="Left" Height="507" Margin="10,48,9.8,10.4" VerticalAlignment="Top" Width="1104" >
+            <ComboBox x:Name="comboBoxMake" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="43,62,0,0" SelectionChanged="comboBox_SelectionChanged"/>
+            <Label x:Name="label" Content="Make" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="43,36,0,0" FontWeight="Bold"/>
+            <Label x:Name="label1" Content="Model" HorizontalAlignment="Left" Margin="195,36,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <ComboBox x:Name="comboBoxModel" HorizontalAlignment="Left" Margin="195,62,0,0" VerticalAlignment="Top" Width="120"/>
+            <ComboBox x:Name="comboBoxStartYear" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="43,142,0,0" SelectionChanged="comboBoxStartYear_SelectionChanged"/>
+            <ComboBox x:Name="comboBoxEndYear" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="195,143,0,0"/>
+            <TextBox x:Name="textBoxPriceFrom"  HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="from" VerticalAlignment="Top" Width="120" Margin="43,237,0,0" Foreground="#FFBCAFAF" GotFocus="textBoxPriceFrom_GotFocus" LostFocus="textBoxPriceFrom_LostFocus"   />
+            <TextBox x:Name="textBoxPriceTo" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="to" VerticalAlignment="Top" Width="120" Margin="43,265,0,0" Foreground="#FFBCAFAF" GotFocus="textBoxPriceTo_GotFocus" LostFocus="textBoxPriceTo_LostFocus"/>
+            <Label x:Name="label2" Content="Year From" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="43,111,0,0" FontWeight="Bold"/>
+            <Label x:Name="label3" Content="Year To" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="3.615,2.875" Margin="195,111,0,0" FontWeight="Bold"/>
+            <Label x:Name="label4" Content="Price" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="43,206,0,0" FontWeight="Bold"/>
+            <TextBox x:Name="textBoxColour" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="43,366,0,0"/>
+            <Label x:Name="label6" Content="Exterior Colour :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="43,336,0,0" FontWeight="Bold"/>
+            <TextBox x:Name="textBoxKm" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="195,366,0,0"/>
+            <Label x:Name="label7" Content="Kilometers :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="195,336,0,0" FontWeight="Bold"/>
+            <ComboBox x:Name="comboBoxRegDate" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="195,250,0,0"/>
+            <Label x:Name="label8" Content="First registration (date)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="195,219,0,0" FontWeight="Bold"/>
+            <ComboBox x:Name="comboBoxTrans" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="386,62,0,0"/>
+            <ComboBox x:Name="comboBoxFuel" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="542,62,0,0"/>
+            <Label x:Name="label5" Content="Transmission" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="386,36,0,0" FontWeight="Bold"/>
+            <Label x:Name="label9" Content="Fuel" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="542,36,0,0" FontWeight="Bold"/>
+            <Label x:Name="label10" Content="Power :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="386,111,0,0" FontWeight="Bold"/>
+            <Label x:Name="label11" Content="Cubic Capacity :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="542,111,0,0" FontWeight="Bold"/>
+            <TextBox x:Name="textBoxHP" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="386,143,0,0"/>
+            <TextBox x:Name="textBoxCC" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="542,143,0,0"/>
+        </Grid>
 
     </Grid>
 </Window>
