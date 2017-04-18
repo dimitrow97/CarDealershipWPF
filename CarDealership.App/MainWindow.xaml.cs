@@ -14,46 +14,46 @@ namespace CarDealership.App
         {
             InitializeComponent();            
             CarDealershipContext context = new CarDealershipContext();
-            //context.Database.Initialize(force: true);
-
-            //Owner zhu = new Owner()
-            //{
-            //    FirstName = "Zhulian",
-            //    LastName = "Dimitrov",
-            //    Username = "dimitrow97",
-            //    Password = Encrypt("123456"),
-            //    Email = "dimitrow97@gmail.com",
-            //    PhoneNumber = "0883552353"
-            //};
-            //context.Owners.Add(zhu);
-            //Owner paco = new Owner()
-            //{
-            //    FirstName = "Plamen",
-            //    LastName = "Parushev",
-            //    Username = "paco",
-            //    Password = Encrypt("654321"),
-            //    Email = "paco@gmail.com",
-            //    PhoneNumber = "0883641267"
-            //};
-            //context.Owners.Add(paco);
-
-            //Car audi = new Car()
-            //{
-            //    Make = "Audi",
-            //    Model = "A3",
-            //    ProductionYear = "2007",
-            //    BodyPaint = "Black Metalic",
-            //    Price = 10000,
-            //    KmPassed = 130000,
-            //    HorsePower = 105,
-            //    EngineDisplacement = 1900,
-            //    Description = "Almost as good as new!",
-            //    Transmission = "Manual",
-            //    Fuel = "Deisel",
-            //    Seller = zhu                
-            //};
-            //context.Cars.Add(audi);
-            //context.SaveChanges();
+        //     context.Database.Initialize(force: true);
+        //
+        //    Owner zhu = new Owner()
+        //    {
+        //        FirstName = "Zhulian",
+        //        LastName = "Dimitrov",
+        //        Username = "dimitrow97",
+        //        Password = Encrypt("123456"),
+        //        Email = "dimitrow97@gmail.com",
+        //        PhoneNumber = "0883552353"
+        //    };
+        //    context.Owners.Add(zhu);
+        //    Owner paco = new Owner()
+        //    {
+        //        FirstName = "Plamen",
+        //        LastName = "Parushev",
+        //        Username = "paco",
+        //        Password = Encrypt("654321"),
+        //        Email = "paco@gmail.com",
+        //        PhoneNumber = "0883641267"
+        //    };
+        //    context.Owners.Add(paco);
+        //
+        //    Car audi = new Car()
+        //    {
+        //        Make = "Audi",
+        //        Model = "A3",
+        //        ProductionYear = "2007",
+        //        BodyPaint = "Black Metalic",
+        //        Price = 10000,
+        //        KmPassed = 130000,
+        //        HorsePower = 105,
+        //        EngineDisplacement = 1900,
+        //        Description = "Almost as good as new!",
+        //        Transmission = "Manual",
+        //        Fuel = "Deisel",
+        //        Seller = zhu                
+        //   };
+        //    context.Cars.Add(audi);
+        //    context.SaveChanges();
         }
 
         public static bool isOwner;

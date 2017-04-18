@@ -66,3 +66,5 @@ D:\CarDealerProject\CarDealershipWPF\CarDealership.App\obj\Debug\MainMenu.g.cs
 D:\CarDealerProject\CarDealershipWPF\CarDealership.App\obj\Debug\MainMenu.baml
 C:\Users\dimit\Desktop\CarDealership\CarDealershipWPF\CarDealership.App\obj\Debug\CarFullInfo.g.cs
 C:\Users\dimit\Desktop\CarDealership\CarDealershipWPF\CarDealership.App\obj\Debug\CarFullInfo.baml
+D:\CarDealerProject\CarDealershipWPF\CarDealership.App\obj\Debug\CarFullInfo.g.cs
+D:\CarDealerProject\CarDealershipWPF\CarDealership.App\obj\Debug\CarFullInfo.baml
