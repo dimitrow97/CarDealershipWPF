@@ -1,0 +1,36 @@
+﻿<Window x:Class="CarDealership.App.CarFullInfo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CarDealership.App"
+        mc:Ignorable="d"
+        Title="Car`s Full Info" Height="650" Width="874.809">
+    <Grid>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="354" Margin="10,10,0,0" VerticalAlignment="Top" Width="849"/>
+        <Label x:Name="label" Content="Make" HorizontalAlignment="Left" Margin="151,383,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Copperplate Gothic Light"/>
+        <Label x:Name="makeLabel" Content="" HorizontalAlignment="Left" Margin="231,383,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Copperplate Gothic Light"/>
+        <Label x:Name="label1" Content="Model" HorizontalAlignment="Left" Margin="137,414,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Copperplate Gothic Light"/>
+        <Label x:Name="modelLabel" Content="" HorizontalAlignment="Left" Margin="231,414,0,0" VerticalAlignment="Top" FontFamily="Copperplate Gothic Light" FontSize="20"/>
+        <Label x:Name="label3" Content="Production Year" HorizontalAlignment="Left" Margin="23,478,0,0" VerticalAlignment="Top" FontFamily="Copperplate Gothic Light" FontSize="20"/>
+        <Label x:Name="yearLabel" Content="" HorizontalAlignment="Left" Margin="231,478,0,0" VerticalAlignment="Top" FontFamily="Copperplate Gothic Light" FontSize="20"/>
+        <Label x:Name="label2" Content="External Color" HorizontalAlignment="Left" Margin="31,515,0,0" VerticalAlignment="Top" FontFamily="Copperplate Gothic Light" FontSize="20"/>
+        <Label x:Name="colorLabel" Content="" HorizontalAlignment="Left" Margin="231,515,0,0" VerticalAlignment="Top" FontFamily="Copperplate Gothic Light" FontSize="20"/>
+        <Label x:Name="label4" Content="Price" HorizontalAlignment="Left" Margin="148,446,0,0" VerticalAlignment="Top" FontFamily="Copperplate Gothic Light" FontSize="20"/>
+        <Label x:Name="priceLabel" Content="" HorizontalAlignment="Left" Margin="231,446,0,0" VerticalAlignment="Top" FontFamily="Copperplate Gothic Light" FontSize="20"/>
+        <Label x:Name="label5" Content="Fuel" HorizontalAlignment="Left" Margin="575,383,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Copperplate Gothic Light"/>
+        <Label x:Name="label6" Content="Transmission" HorizontalAlignment="Left" Margin="482,414,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Copperplate Gothic Light"/>
+        <Label x:Name="label7" Content="Km Passed" HorizontalAlignment="Left" Margin="513,446,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Copperplate Gothic Light"/>
+        <Label x:Name="label8" Content="Engine Displacement" HorizontalAlignment="Left" Margin="399,480,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Copperplate Gothic Light"/>
+        <Label x:Name="label9" Content="HorsePower" HorizontalAlignment="Left" Margin="485,515,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Copperplate Gothic Light"/>
+        <Label x:Name="fuelLabel" Content="" HorizontalAlignment="Left" Margin="658,383,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Copperplate Gothic Light"/>
+        <Label x:Name="tranLabel" Content="" HorizontalAlignment="Left" Margin="658,414,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Copperplate Gothic Light"/>
+        <Label x:Name="edLabel" Content="" HorizontalAlignment="Left" Margin="658,478,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Copperplate Gothic Light"/>
+        <Label x:Name="hpLabel" Content="" HorizontalAlignment="Left" Margin="658,515,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Copperplate Gothic Light"/>
+        <Label x:Name="kmLabel" Content="" HorizontalAlignment="Left" Margin="658,446,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Copperplate Gothic Light"/>
+        <Label x:Name="desLabel" Content="" HorizontalAlignment="Left" Margin="76,552,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Copperplate Gothic Light" RenderTransformOrigin="-0.62,0.571"/>
+        <Button x:Name="button" Content="Next" HorizontalAlignment="Left" Margin="768,331,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="button_Click"/>
+        <Label x:Name="errorLabel" Content="The car has no images yet!" HorizontalAlignment="Left" Margin="174,148,0,0" VerticalAlignment="Top" FontFamily="Copperplate Gothic Light" FontSize="36" Visibility="Hidden"/>
+
+    </Grid>
+</Window>

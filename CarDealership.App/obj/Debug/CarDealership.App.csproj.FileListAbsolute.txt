@@ -64,3 +64,5 @@ D:\CarDealerProject\CarDealershipWPF\CarDealership.App\bin\Debug\EntityFramework
 D:\CarDealerProject\CarDealershipWPF\CarDealership.App\bin\Debug\EntityFramework.SqlServer.xml
 D:\CarDealerProject\CarDealershipWPF\CarDealership.App\obj\Debug\MainMenu.g.cs
 D:\CarDealerProject\CarDealershipWPF\CarDealership.App\obj\Debug\MainMenu.baml
+C:\Users\dimit\Desktop\CarDealership\CarDealershipWPF\CarDealership.App\obj\Debug\CarFullInfo.g.cs
+C:\Users\dimit\Desktop\CarDealership\CarDealershipWPF\CarDealership.App\obj\Debug\CarFullInfo.baml

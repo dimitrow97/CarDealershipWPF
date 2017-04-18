@@ -1,23 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.IO;
 using System.Text.RegularExpressions;
 
 namespace CarDealership.App
-{  
+{
     public partial class MainMenu : Window
     {
         public MainMenu()
@@ -78,7 +67,7 @@ namespace CarDealership.App
         private void ShowCars_Click(object sender, RoutedEventArgs e)
         {
             SqlConnection conn = new SqlConnection(@"Server=.\SQLEXPRESS;Integrated security=true");
-            string showCarsQuery = @"USE CarDealership SELECT Make, Model, ProductionYear AS [Production Year], Price, BodyPaint AS Color, KmPassed AS [Km Passed] FROM Cars";
+            string showCarsQuery = @"USE CarDealership SELECT Id, Make, Model, ProductionYear AS [Production Year], Price, BodyPaint AS Color, KmPassed AS [Km Passed] FROM Cars";
             SqlCommand showCars = new SqlCommand(showCarsQuery, conn);
             conn.Open();
             SqlDataAdapter datAdapter = new SqlDataAdapter();
@@ -92,7 +81,6 @@ namespace CarDealership.App
         private void PlaceOrder_Click(object sender, RoutedEventArgs e)
         {
             OrderGrid.Visibility = Visibility.Visible;
-
         }
 
         private void MyOrders_Click(object sender, RoutedEventArgs e)
@@ -101,8 +89,7 @@ namespace CarDealership.App
         }
 
         private void AddNewCar_Click(object sender, RoutedEventArgs e)
-        {
-         
+        {         
 
         }
 
@@ -234,5 +221,19 @@ namespace CarDealership.App
         {
             textBoxPriceTo.Text = "to";
         }
+
+        private void FullInfo_Click(object sender, RoutedEventArgs e)
+        {
+            CarFullInfo form = new CarFullInfo();
+            form.Show();
+        }
+
+        private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var car = dataGrid.SelectedItem;
+            string id = (dataGrid.SelectedCells[0].Column.GetCellContent(car) as TextBlock).Text;
+            carId = int.Parse(id);
+        }
+        public static int carId;    
     }
 }
