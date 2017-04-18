@@ -4,6 +4,12 @@ using System.Windows;
 using System.Windows.Controls;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Windows.Media.Imaging;
+using System;
+using CarDealership.Data;
+using CarDealership.Models.Models;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace CarDealership.App
 {
@@ -23,10 +29,13 @@ namespace CarDealership.App
                 CheckOrders.Visibility = Visibility.Visible;
             }
 
-             }
+        }
 
         private void ShowCars_Click(object sender, RoutedEventArgs e)
         {
+            OrderGrid.Visibility = Visibility.Hidden;
+            AddNewCarGrid.Visibility = Visibility.Hidden;
+
             SqlConnection conn = new SqlConnection(@"Server=.\SQLEXPRESS;Integrated security=true");
             string showCarsQuery = @"USE CarDealership SELECT Id, Make, Model, ProductionYear AS [Production Year], Price, BodyPaint AS Color, KmPassed AS [Km Passed] FROM Cars";
             SqlCommand showCars = new SqlCommand(showCarsQuery, conn);
@@ -377,21 +386,17 @@ namespace CarDealership.App
             textBoxCcANC.Clear();
             textBoxKmANC.Clear();
             textBoxDescription.Clear();
-        }
-
+        }        
+        List<string> photos = new List<string>();
         private void buttonAddImage_Click(object sender, RoutedEventArgs e)
         {
-
-
-
-
             var ofd = new Microsoft.Win32.OpenFileDialog() { Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif" };
             var result = ofd.ShowDialog();
             if (result == false) return;
-            textBoxImageUrl.Text = ofd.FileName;
-
-
-
+            string path = ofd.FileName;
+            image.Source = new BitmapImage(new Uri(path));
+            photos.Add(path);
+            picCount.Content = photos.Count();      
         }
 
         private void buttonResetOrder_Click(object sender, RoutedEventArgs e)
@@ -407,6 +412,53 @@ namespace CarDealership.App
             textBoxKm.Clear();
             textBoxPriceFrom.Clear();
             textBoxPriceTo.Clear();
+        }
+
+        private void buttonSubmitANC_Click(object sender, RoutedEventArgs e)
+        {
+            dataGrid.Visibility = Visibility.Hidden;
+             
+            CarDealershipContext context = new CarDealershipContext();
+            var seller = context.Owners.Where(x => x.Username == MainWindow.username).FirstOrDefault();
+            int count = context.Cars.Count();
+            Car newCar = new Car()
+            {
+                Make = comboBoxMakeANC.Text,
+                Model = comboBoxModelANC.Text,
+                ProductionYear = comboBoxYearMadeANC.Text,
+                Fuel = comboBoxFuelANC.Text,
+                Transmission = comboBoxTransANC.Text,
+                BodyPaint = textBoxColourANC.Text,
+                KmPassed = long.Parse(textBoxKmANC.Text),
+                Description = textBoxDescription.Text,
+                EngineDisplacement = int.Parse(textBoxCcANC.Text),
+                HorsePower = int.Parse(textBoxPriceANC.Text),
+                Price = int.Parse(textBoxPriceANC.Text),
+                Seller = seller               
+            };
+            seller.CarsForSale.Add(newCar);            
+            context.Cars.Add(newCar);
+
+            for(int i = 0; i < photos.Count(); i++)
+            { 
+                CarPhoto photo = new CarPhoto()
+                {
+                    FileName = comboBoxMakeANC.Text + comboBoxModelANC.Text + "Car"+ count + "." + (i+1),
+                    Photo = imageToByteArray(new BitmapImage(new Uri(photos[i]))),
+                    Car = newCar
+                };
+                newCar.Photos.Add(photo);
+            }
+            context.SaveChanges();
+        }
+
+        public byte[] imageToByteArray(BitmapImage imageIn)
+        {
+            MemoryStream memoryStream = new MemoryStream();
+            JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(imageIn));
+            encoder.Save(memoryStream);
+            return memoryStream.ToArray();
         }
     }
 }

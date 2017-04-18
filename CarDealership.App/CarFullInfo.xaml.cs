@@ -14,7 +14,9 @@ namespace CarDealership.App
 
             CarDealershipContext context = new CarDealershipContext();
 
+            var pictures = context.CarPhotos.Where(x => x.Car.Id == MainMenu.carId).Select(i => i.Photo).ToList();
             var car = context.Cars.Where(x => x.Id == MainMenu.carId).FirstOrDefault();
+            var seller = context.Owners.Where(x => x.CarsForSale.Any(y => y.Id == car.Id)).FirstOrDefault();
             var picturesCount = context.CarPhotos.Where(x => x.Car.Id == MainMenu.carId).Count();
 
             makeLabel.Content = car.Make;
@@ -28,10 +30,17 @@ namespace CarDealership.App
             edLabel.Content = car.EngineDisplacement + "cm3";
             hpLabel.Content = car.HorsePower + "hp";
             desLabel.Content = "Description - " + car.Description;
+            sellerNames.Content = seller.FirstName + " " + seller.LastName;
+            phoneLabel.Content = seller.PhoneNumber;
 
             if (picturesCount > 0)
+            {
                 button.IsEnabled = true;
+                image.Source = LoadImage(pictures[0]);
+            }
             else errorLabel.Visibility = Visibility.Visible;
+
+            
         }
 
         public static BitmapImage LoadImage(byte[] imageData)
@@ -53,22 +62,23 @@ namespace CarDealership.App
             return image;
         }
 
-        public static int count = 1;
+        public static int count = 2;
         private void button_Click(object sender, RoutedEventArgs e)
         {
             CarDealershipContext context = new CarDealershipContext();
             var pictures = context.CarPhotos.Where(x => x.Car.Id == MainMenu.carId).Select(i => i.Photo).ToList();
             var picturesCount = context.CarPhotos.Where(x => x.Car.Id == MainMenu.carId).Count();
 
-            if (count < picturesCount)
+            if (count <= picturesCount)
             {                
-                image.Source = LoadImage(pictures[count]);
+                image.Source = LoadImage(pictures[count - 1]);
                 count++;
             }
             else
             {
-                count = 0;
-                image.Source = LoadImage(pictures[count]);
+                count = 1;
+                image.Source = LoadImage(pictures[count - 1]);
+                count++;
             }
         }
     }

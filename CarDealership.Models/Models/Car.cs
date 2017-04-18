@@ -22,7 +22,7 @@ namespace CarDealership.Models.Models
         [MaxLength(30)]
         public string BodyPaint { get; set; }
         public long KmPassed { get; set; }       
-        [MaxLength(20)]
+        [MaxLength(50)]
         public string Transmission { get; set; }
         [MaxLength(25)]
         public string Fuel { get; set; }

@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CarDealership.App"
         mc:Ignorable="d"
-        Title="Car`s Full Info" Height="650" Width="874.809">
+        Title="Car`s Full Info" Height="708.8" Width="874.809">
     <Grid>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="354" Margin="10,10,0,0" VerticalAlignment="Top" Width="849"/>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="354" Margin="151,10,0,0" VerticalAlignment="Top" Width="568"/>
         <Label x:Name="label" Content="Make" HorizontalAlignment="Left" Margin="151,383,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Copperplate Gothic Light"/>
         <Label x:Name="makeLabel" Content="" HorizontalAlignment="Left" Margin="231,383,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Copperplate Gothic Light"/>
         <Label x:Name="label1" Content="Model" HorizontalAlignment="Left" Margin="137,414,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Copperplate Gothic Light"/>
@@ -28,9 +28,13 @@
         <Label x:Name="edLabel" Content="" HorizontalAlignment="Left" Margin="658,478,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Copperplate Gothic Light"/>
         <Label x:Name="hpLabel" Content="" HorizontalAlignment="Left" Margin="658,515,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Copperplate Gothic Light"/>
         <Label x:Name="kmLabel" Content="" HorizontalAlignment="Left" Margin="658,446,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Copperplate Gothic Light"/>
-        <Label x:Name="desLabel" Content="" HorizontalAlignment="Left" Margin="76,552,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Copperplate Gothic Light" RenderTransformOrigin="-0.62,0.571"/>
+        <Label x:Name="desLabel" Content="" HorizontalAlignment="Left" Margin="31,625,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Copperplate Gothic Light" RenderTransformOrigin="-0.62,0.571"/>
         <Button x:Name="button" Content="Next" HorizontalAlignment="Left" Margin="768,331,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="button_Click"/>
         <Label x:Name="errorLabel" Content="The car has no images yet!" HorizontalAlignment="Left" Margin="174,148,0,0" VerticalAlignment="Top" FontFamily="Copperplate Gothic Light" FontSize="36" Visibility="Hidden"/>
+        <Label x:Name="label10" Content="Seller" HorizontalAlignment="Left" Margin="133,552,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Copperplate Gothic Light"/>
+        <Label x:Name="sellerNames" Content="" HorizontalAlignment="Left" Margin="246,552,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Copperplate Gothic Light"/>
+        <Label x:Name="label11" Content="Seller`s PhoneNumber" HorizontalAlignment="Left" Margin="23,588,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Copperplate Gothic Light"/>
+        <Label x:Name="phoneLabel" Content="" HorizontalAlignment="Left" Margin="327,591,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.738,0.965" FontFamily="Copperplate Gothic Light" FontSize="20"/>
 
     </Grid>
 </Window>

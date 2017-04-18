@@ -47,7 +47,7 @@
             <Label x:Name="label24" Content="to" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="43,246,0,0" FontWeight="Bold"/>
         </Grid>
 
-        <Grid x:Name="AddNewCarGrid" Height="507" VerticalAlignment="Top" Width="1287" Margin="10,48,0,0" Visibility="Hidden" >
+        <Grid x:Name="AddNewCarGrid" Height="507" VerticalAlignment="Top" Width="1287" Margin="10,48,0,0" Visibility="Visible" >
             <ComboBox x:Name="comboBoxTransANC" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="360,83,0,0" Loaded="comboBoxTransANC_Loaded"/>
             <ComboBox x:Name="comboBoxFuelANC" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="185,196,0,0" Loaded="comboBoxFuelANC_Loaded"/>
             <ComboBox x:Name="comboBoxMakeANC" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="10,83,0,0"  Loaded="comboBoxMakeANC_Loaded" SelectionChanged="comboBoxMakeANC_SelectionChanged" />
@@ -58,7 +58,7 @@
             <TextBox x:Name="textBoxHpANC" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="10,299,0,0" FontSize="14"/>
             <TextBox x:Name="textBoxCcANC" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="185,299,0,0" FontSize="14"/>
             <TextBox x:Name="textBoxKmANC" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="360,299,0,0" FontSize="14"/>
-            <TextBox x:Name="textBoxDescription" HorizontalAlignment="Left" Height="85" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="470" Margin="10,395,0,0" FontSize="14"/>
+            <TextBox x:Name="textBoxDescription" HorizontalAlignment="Left" Height="85" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="647" Margin="10,395,0,0" FontSize="14"/>
             <Label x:Name="label12" Content="Make" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,49,0,0" FontWeight="Bold" FontSize="14"/>
             <Label x:Name="label13" Content="Model" HorizontalAlignment="Left" Margin="185,49,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
             <Label x:Name="label14" Content="Price" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="537,49,0,0" FontWeight="Bold" FontSize="14"/>
@@ -70,11 +70,15 @@
             <Label x:Name="label20" Content="Cubic Capacity :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="185,265,0,0" FontWeight="Bold" FontSize="14"/>
             <Label x:Name="label21" Content="Kilometers :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="360,265,0,0" FontWeight="Bold" FontSize="14"/>
             <Label x:Name="label22" Content="Description" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="10,361,0,0" FontSize="14"/>
-            <Button x:Name="buttonSubmitANC" Content="Submit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Margin="644,439,0,0" Height="41" FontSize="14"/>
-            <Button x:Name="buttonResetANC" Content="Reset" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="833,439,0,0" Height="41" Click="buttonResetANC_Click" FontSize="14"/>
-            <Button x:Name="buttonAddImage" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="833,263,0,0" Click="buttonAddImage_Click" FontSize="14"/>
-            <TextBox x:Name="textBoxImageUrl" HorizontalAlignment="Left" Height="77" TextWrapping="Wrap" Text="Url na kartinka" VerticalAlignment="Top" Width="197" Margin="800,141,0,0"/>
+            <Button x:Name="buttonSubmitANC" Content="Submit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Margin="808,439,0,0" Height="41" FontSize="14" Click="buttonSubmitANC_Click"/>
+            <Button x:Name="buttonResetANC" Content="Reset" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="1018,439,0,0" Height="41" Click="buttonResetANC_Click" FontSize="14"/>
+            <Button x:Name="buttonAddImage" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="537,290,0,0" Click="buttonAddImage_Click" FontSize="14" Height="32"/>
+            <Image x:Name="image" HorizontalAlignment="Left" Height="341" Margin="695,49,0,0" VerticalAlignment="Top" Width="546"/>
+            <Label x:Name="label25" Content="Tip:" HorizontalAlignment="Left" Margin="528,162,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="label26" Content="Add as many &#xD;&#xA;photos as you want,&#xD;&#xA;just keep clicking&#xD;&#xA;Add and select them&#xD;&#xA;one by one." HorizontalAlignment="Left" Margin="528,183,0,0" VerticalAlignment="Top"/>
         </Grid>
+        <Label x:Name="label27" Content="Pictures to be Added: " HorizontalAlignment="Left" Margin="705,441,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="picCount" Content="" HorizontalAlignment="Left" Margin="857,441,0,0" VerticalAlignment="Top"/>
 
 
     </Grid>
