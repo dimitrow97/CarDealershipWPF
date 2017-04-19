@@ -18,7 +18,7 @@ namespace CarDealership.App
             var car = context.Cars.Where(x => x.Id == MainMenu.carId).FirstOrDefault();
             var seller = context.Owners.Where(x => x.CarsForSale.Any(y => y.Id == car.Id)).FirstOrDefault();
             var picturesCount = context.CarPhotos.Where(x => x.Car.Id == MainMenu.carId).Count();
-
+            
             makeLabel.Content = car.Make;
             modelLabel.Content = car.Model;
             priceLabel.Content = car.Price + "€";
@@ -61,7 +61,7 @@ namespace CarDealership.App
             image.Freeze();
             return image;
         }
-
+        
         public static int count = 2;
         private void button_Click(object sender, RoutedEventArgs e)
         {

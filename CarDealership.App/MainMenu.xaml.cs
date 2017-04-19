@@ -35,6 +35,9 @@ namespace CarDealership.App
         {
             OrderGrid.Visibility = Visibility.Hidden;
             AddNewCarGrid.Visibility = Visibility.Hidden;
+            dataGrid1.Visibility = Visibility.Hidden;
+            dataGrid.Visibility = Visibility.Visible;
+        
 
             SqlConnection conn = new SqlConnection(@"Server=.\SQLEXPRESS;Integrated security=true");
             string showCarsQuery = @"USE CarDealership SELECT Id, Make, Model, ProductionYear AS [Production Year], Price, BodyPaint AS Color, KmPassed AS [Km Passed] FROM Cars";
@@ -50,19 +53,39 @@ namespace CarDealership.App
 
         private void PlaceOrder_Click(object sender, RoutedEventArgs e)
         {
-            AddNewCarGrid.Visibility = Visibility.Hidden;
+            dataGrid1.Visibility = Visibility.Hidden;           
+            dataGrid.Visibility = Visibility.Hidden;
             OrderGrid.Visibility = Visibility.Visible;
-                                        
         }
 
         private void MyOrders_Click(object sender, RoutedEventArgs e)
         {
+            dataGrid.Visibility = Visibility.Hidden;
+            OrderGrid.Visibility = Visibility.Hidden;
+            dataGrid1.Visibility = Visibility.Visible;
+
+            SqlConnection conn = new SqlConnection(@"Server=.\SQLEXPRESS;Integrated security=true");
+            string showOrdersQuery = @"USE CarDealership SELECT
+             Make , Model , ProductionYearStart AS [Production Year Start],
+             ProductionYearEnd AS [Production Year End],
+             PriceStart AS [Price Start],PriceEnd AS [Price End],
+             BodyPaint AS Color,KmPassed AS [Km Passed],Transmission,Fuel,HorsePower AS [Horse Power],
+             EngineDisplacement AS [Engine Displacement] FROM Orders";
+            SqlCommand showOrders = new SqlCommand(showOrdersQuery, conn);
+            conn.Open();
+            SqlDataAdapter datAdapter = new SqlDataAdapter();
+            datAdapter.SelectCommand = showOrders;
+            DataTable orders = new DataTable();
+            datAdapter.Fill(orders);
+            dataGrid1.DataContext = orders.DefaultView;
+            conn.Close();
+
 
         }
 
         private void AddNewCar_Click(object sender, RoutedEventArgs e)
         {
-            OrderGrid.Visibility = Visibility.Hidden;
+            dataGrid.Visibility = Visibility.Hidden;            
             AddNewCarGrid.Visibility = Visibility.Visible;
         }
 
@@ -81,7 +104,7 @@ namespace CarDealership.App
             for (int i = 2017; i >= 1950; i--)
             {
                 comboBoxStartYear.Items.Add("from " + i);
-                
+
             }
 
         }
@@ -206,8 +229,17 @@ namespace CarDealership.App
 
         private void FullInfo_Click(object sender, RoutedEventArgs e)
         {
-            CarFullInfo form = new CarFullInfo();
-            form.Show();
+            
+            if (dataGrid.SelectedIndex>-1)
+            {
+                CarFullInfo form = new CarFullInfo();
+                form.Show();
+
+                
+            }
+            
+          
+
         }
 
         private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -215,6 +247,7 @@ namespace CarDealership.App
             var car = dataGrid.SelectedItem;
             string id = (dataGrid.SelectedCells[0].Column.GetCellContent(car) as TextBlock).Text;
             carId = int.Parse(id);
+          
         }
         public static int carId;
 
@@ -231,7 +264,7 @@ namespace CarDealership.App
             }
             comboBoxModelANC.IsEnabled = false;
 
-         
+            
         }
 
         private void comboBoxMakeANC_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -316,7 +349,7 @@ namespace CarDealership.App
             comboBoxTrans.Items.Add("Manual Gearbox");
             comboBoxTrans.Items.Add("Semi-Automatic");
             comboBoxTrans.Items.Add("Automatic Transmission");
-        }      
+        }
 
         private void comboBoxTransANC_Loaded(object sender, RoutedEventArgs e)
         {
@@ -360,19 +393,8 @@ namespace CarDealership.App
             }
 
         }
-      
-        private void comboBoxRegDate_Loaded(object sender, RoutedEventArgs e)
-        {
-            comboBoxRegDate.Items.Add("Any");
-            comboBoxRegDate.SelectedIndex = 0;
 
-            for (int i = 2017; i >= 1950; i--)
-            {
-               
-                comboBoxRegDate.Items.Add(i);
-            }
-        }
-
+   
         private void buttonResetANC_Click(object sender, RoutedEventArgs e)
         {
 
@@ -386,17 +408,26 @@ namespace CarDealership.App
             textBoxCcANC.Clear();
             textBoxKmANC.Clear();
             textBoxDescription.Clear();
-        }        
+            picCount.Visibility = Visibility.Hidden;           
+            label27.Visibility = Visibility.Hidden;
+            image.Visibility = Visibility.Hidden;
+            photos.Clear();
+
+        }
         List<string> photos = new List<string>();
         private void buttonAddImage_Click(object sender, RoutedEventArgs e)
         {
-            var ofd = new Microsoft.Win32.OpenFileDialog() { Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif" };
+            var ofd = new Microsoft.Win32.OpenFileDialog() { Filter = "JPG Files (*.jpg)|*.jpg|PNG Files (*.png)|*.png|JPEG Files (*.jpeg)|*.jpeg|GIF Files (*.gif)|*.gif" };
             var result = ofd.ShowDialog();
             if (result == false) return;
             string path = ofd.FileName;
             image.Source = new BitmapImage(new Uri(path));
             photos.Add(path);
-            picCount.Content = photos.Count();      
+            picCount.Content = photos.Count();
+          
+            label27.Visibility = Visibility.Visible;
+            picCount.Visibility = Visibility.Visible;
+            image.Visibility = Visibility.Visible;
         }
 
         private void buttonResetOrder_Click(object sender, RoutedEventArgs e)
@@ -404,7 +435,6 @@ namespace CarDealership.App
             comboBoxMake.SelectedIndex = 0;
             comboBoxStartYear.SelectedIndex = 0;
             comboBoxTrans.SelectedIndex = 0;
-            comboBoxRegDate.SelectedIndex = 0;
             comboBoxFuel.SelectedIndex = 0;
             textBoxColour.Clear();
             textBoxHP.Clear();
@@ -416,8 +446,8 @@ namespace CarDealership.App
 
         private void buttonSubmitANC_Click(object sender, RoutedEventArgs e)
         {
-            dataGrid.Visibility = Visibility.Hidden;
-             
+            
+
             CarDealershipContext context = new CarDealershipContext();
             var seller = context.Owners.Where(x => x.Username == MainWindow.username).FirstOrDefault();
             int count = context.Cars.Count();
@@ -432,24 +462,41 @@ namespace CarDealership.App
                 KmPassed = long.Parse(textBoxKmANC.Text),
                 Description = textBoxDescription.Text,
                 EngineDisplacement = int.Parse(textBoxCcANC.Text),
-                HorsePower = int.Parse(textBoxPriceANC.Text),
+                HorsePower = int.Parse(textBoxHpANC.Text),
                 Price = int.Parse(textBoxPriceANC.Text),
-                Seller = seller               
+                Seller = seller
             };
-            seller.CarsForSale.Add(newCar);            
+            seller.CarsForSale.Add(newCar);
             context.Cars.Add(newCar);
 
-            for(int i = 0; i < photos.Count(); i++)
-            { 
+            for (int i = 0; i < photos.Count(); i++)
+            {
                 CarPhoto photo = new CarPhoto()
                 {
-                    FileName = comboBoxMakeANC.Text + comboBoxModelANC.Text + "Car"+ count + "." + (i+1),
+                    FileName = comboBoxMakeANC.Text + comboBoxModelANC.Text + "Car" + count + "." + (i + 1),
                     Photo = imageToByteArray(new BitmapImage(new Uri(photos[i]))),
                     Car = newCar
                 };
                 newCar.Photos.Add(photo);
             }
             context.SaveChanges();
+
+
+            comboBoxMakeANC.SelectedIndex = 0;
+            comboBoxTransANC.SelectedIndex = 0;
+            comboBoxFuelANC.SelectedIndex = 0;
+            comboBoxYearMadeANC.SelectedIndex = 0;
+            textBoxPriceANC.Clear();
+            textBoxColourANC.Clear();
+            textBoxHpANC.Clear();
+            textBoxCcANC.Clear();
+            textBoxKmANC.Clear();
+            textBoxDescription.Clear();
+            picCount.Visibility = Visibility.Hidden;
+            label27.Visibility = Visibility.Hidden;
+            image.Visibility = Visibility.Hidden;
+            photos.Clear();
+
         }
 
         public byte[] imageToByteArray(BitmapImage imageIn)
@@ -460,5 +507,51 @@ namespace CarDealership.App
             encoder.Save(memoryStream);
             return memoryStream.ToArray();
         }
+
+        private void buttonSubmitOrder_Click(object sender, RoutedEventArgs e)
+        {
+            CarDealershipContext context = new CarDealershipContext();
+
+            var OrderByCustomer = context.Customers.Where(x => x.Username == MainWindow.username).FirstOrDefault();
+           
+
+            Order newOrder = new Order()
+            {
+                Make = comboBoxMake.Text,
+                Model = comboBoxModel.Text,
+                ProductionYearStart = Regex.Match(comboBoxStartYear.SelectedItem.ToString(), @"\d+").Value,
+                ProductionYearEnd = Regex.Match(comboBoxEndYear.SelectedItem.ToString(), @"\d+").Value,
+                PriceStart = int.Parse(textBoxPriceFrom.Text),
+                PriceEnd = int.Parse(textBoxPriceTo.Text),
+                BodyPaint = textBoxColour.Text,
+                KmPassed = long.Parse(textBoxKm.Text),               
+                Transmission = comboBoxTrans.Text,
+                Fuel = comboBoxFuel.Text,
+                HorsePower = int.Parse(textBoxHP.Text),
+                EngineDisplacement = int.Parse(textBoxCC.Text),
+                OrderPlacedOn = DateTime.Now,
+                OrderedBy = OrderByCustomer,
+
+            };
+
+            
+            context.Orders.Add(newOrder);
+            context.SaveChanges();
+
+
+            comboBoxMake.SelectedIndex = 0;
+            comboBoxStartYear.SelectedIndex = 0;
+            comboBoxTrans.SelectedIndex = 0;
+            comboBoxFuel.SelectedIndex = 0;
+            textBoxColour.Clear();
+            textBoxHP.Clear();
+            textBoxCC.Clear();
+            textBoxKm.Clear();
+            textBoxPriceFrom.Clear();
+            textBoxPriceTo.Clear();
+
+        }
+
+      
     }
 }

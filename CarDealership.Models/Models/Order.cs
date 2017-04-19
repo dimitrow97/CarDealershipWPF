@@ -20,11 +20,9 @@ namespace CarDealership.Models.Models
         [MaxLength(30)]
         public string BodyPaint { get; set; }
         public long? KmPassed { get; set; }
-        [MaxLength(11)]
-        public string YearFirstReg { get; set; }
-        [MaxLength(20)]
+        [MaxLength(50)]
         public string Transmission { get; set; }
-        [MaxLength(25)]
+        [MaxLength(20)]
         public string Fuel { get; set; }
         public int? HorsePower { get; set; }
         public int? EngineDisplacement { get; set; }
