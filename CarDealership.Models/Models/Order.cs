@@ -26,8 +26,7 @@ namespace CarDealership.Models.Models
         public string Fuel { get; set; }
         public int? HorsePower { get; set; }
         public int? EngineDisplacement { get; set; }
-        public DateTime OrderPlacedOn { get; set; }
-        public string IsOrderFinished { get; set; }
+        public DateTime OrderPlacedOn { get; set; }   
         public Customer OrderedBy { get; set; }
         public Owner TakenBy { get; set; }
     }

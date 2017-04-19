@@ -8,12 +8,12 @@
         Title="MainMenu" Height="595.2" Width="1313.2">
     <Grid>
         <Button x:Name="ShowCars" Content="Show Cars" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="105" Height="33" Click="ShowCars_Click"/>
-        <Button x:Name="PlaceOrder" Content="Order" HorizontalAlignment="Left" Margin="773,10,0,0" VerticalAlignment="Top" Width="105" Height="33" Click="PlaceOrder_Click" Visibility="Hidden" />
+        <Button x:Name="PlaceOrder" Content="Order" HorizontalAlignment="Left" Margin="131,10,0,0" VerticalAlignment="Top" Width="105" Height="33" Click="PlaceOrder_Click" Visibility="Hidden" />
         <Button x:Name="MyOrders" HorizontalAlignment="Left" Margin="252,10,0,0" VerticalAlignment="Top" Width="105" Height="33" Click="MyOrders_Click" Content="My Orders" Visibility="Hidden"/>
         <DataGrid x:Name="dataGrid" Margin="10,48,9.8,10.4" ItemsSource="{Binding}" AutoGenerateColumns="True" MinColumnWidth="178" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" GridLinesVisibility="Horizontal" IsReadOnly="True" SelectionChanged="dataGrid_SelectionChanged" Visibility="Hidden"/>
         <Button x:Name="AddNewCar" Content="Add New Car" HorizontalAlignment="Left" Margin="252,10,0,0" VerticalAlignment="Top" Width="105" Height="33" Click="AddNewCar_Click" Visibility="Hidden"/>
         <Button x:Name="CheckOrders" Content="Check Orders" HorizontalAlignment="Left" VerticalAlignment="Top" Width="105" Margin="131,10,0,0" Height="33" Click="button_Click" Visibility="Hidden"/>
-        <Button x:Name="FullInfo" Content="Full Info " HorizontalAlignment="Left" Margin="376,10,0,0" VerticalAlignment="Top" Width="105" Height="33" Click="FullInfo_Click"/>
+        <Button x:Name="FullInfo" Content="Full Info " HorizontalAlignment="Left" Margin="376,10,0,0" VerticalAlignment="Top" Width="105" Height="33" Click="FullInfo_Click" IsEnabled="False"/>
 
         <Grid x:Name="OrderGrid" HorizontalAlignment="Left" Height="507" Margin="10,48,0,0" VerticalAlignment="Top" Width="1287" Visibility="Hidden" >
             <ComboBox x:Name="comboBoxMake" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="43,62,0,0" SelectionChanged="comboBoxMake_SelectionChanged" Loaded="comboBoxMake_Loaded"/>
@@ -71,15 +71,18 @@
             <Button x:Name="buttonSubmitANC" Content="Submit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Margin="808,439,0,0" Height="41" FontSize="14" Click="buttonSubmitANC_Click"/>
             <Button x:Name="buttonResetANC" Content="Reset" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="1018,439,0,0" Height="41" Click="buttonResetANC_Click" FontSize="14"/>
             <Button x:Name="buttonAddImage" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="537,290,0,0" Click="buttonAddImage_Click" FontSize="14" Height="32"/>
-            <Image x:Name="image" HorizontalAlignment="Left" Height="341" Margin="695,49,0,0" VerticalAlignment="Top" Width="546" Visibility="Hidden"/>
+            <Image x:Name="image" HorizontalAlignment="Left" Height="341" Margin="695,49,0,0" VerticalAlignment="Top" Width="546" Visibility="Hidden" Stretch="UniformToFill"/>
             <Label x:Name="label25" Content="Tip:" HorizontalAlignment="Left" Margin="528,162,0,0" VerticalAlignment="Top"/>
             <Label x:Name="label26" Content="Add as many &#xD;&#xA;photos as you want,&#xD;&#xA;just keep clicking&#xD;&#xA;Add and select them&#xD;&#xA;one by one." HorizontalAlignment="Left" Margin="528,183,0,0" VerticalAlignment="Top"/>
             <Label x:Name="label27" Content="Pictures to be Added: " HorizontalAlignment="Left" Margin="695,395,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
-            <Label x:Name="picCount" Content="" HorizontalAlignment="Left" Margin="826,395,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+            <Label x:Name="picCount" Content="" HorizontalAlignment="Left" Margin="833,395,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
         </Grid>
 
 
-        <DataGrid x:Name="dataGrid1" Margin="10,48,9.8,10.4" ItemsSource="{Binding}" AutoGenerateColumns="True" MinColumnWidth="178" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" GridLinesVisibility="Horizontal" IsReadOnly="True" Visibility="Hidden"/>
+        <DataGrid x:Name="dataGrid1" Margin="10,48,9.8,10.4" ItemsSource="{Binding}" AutoGenerateColumns="True" MinColumnWidth="178" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" GridLinesVisibility="Horizontal" IsReadOnly="True" Visibility="Hidden" SelectionChanged="dataGrid1_SelectionChanged"/>
+        <Button x:Name="button" Content="Take Order" HorizontalAlignment="Left" Margin="504,10,0,0" VerticalAlignment="Top" Width="105" Height="33" Click="button_Click_1" Visibility="Hidden"/>
+        <Button x:Name="button1" Content="Remove Order" HorizontalAlignment="Left" Margin="626,10,0,0" VerticalAlignment="Top" Width="105" Height="33" Click="button1_Click" Visibility="Hidden"/>
+        <Button x:Name="button2" Content="Remove Car" HorizontalAlignment="Left" Margin="504,10,0,0" VerticalAlignment="Top" Width="105" Height="33" Click="button2_Click" Visibility="Hidden"/>
 
 
 

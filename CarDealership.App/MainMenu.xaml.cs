@@ -28,7 +28,6 @@ namespace CarDealership.App
                 AddNewCar.Visibility = Visibility.Visible;
                 CheckOrders.Visibility = Visibility.Visible;
             }
-
         }
 
         private void ShowCars_Click(object sender, RoutedEventArgs e)
@@ -37,7 +36,8 @@ namespace CarDealership.App
             AddNewCarGrid.Visibility = Visibility.Hidden;
             dataGrid1.Visibility = Visibility.Hidden;
             dataGrid.Visibility = Visibility.Visible;
-        
+            button.Visibility = Visibility.Hidden;
+            button1.Visibility = Visibility.Hidden;            
 
             SqlConnection conn = new SqlConnection(@"Server=.\SQLEXPRESS;Integrated security=true");
             string showCarsQuery = @"USE CarDealership SELECT Id, Make, Model, ProductionYear AS [Production Year], Price, BodyPaint AS Color, KmPassed AS [Km Passed] FROM Cars";
@@ -56,6 +56,10 @@ namespace CarDealership.App
             dataGrid1.Visibility = Visibility.Hidden;           
             dataGrid.Visibility = Visibility.Hidden;
             OrderGrid.Visibility = Visibility.Visible;
+            button.Visibility = Visibility.Hidden;
+            button1.Visibility = Visibility.Hidden;
+            button2.Visibility = Visibility.Hidden;
+            FullInfo.IsEnabled = false;
         }
 
         private void MyOrders_Click(object sender, RoutedEventArgs e)
@@ -63,14 +67,23 @@ namespace CarDealership.App
             dataGrid.Visibility = Visibility.Hidden;
             OrderGrid.Visibility = Visibility.Hidden;
             dataGrid1.Visibility = Visibility.Visible;
+            button.Visibility = Visibility.Hidden;
+            button1.Visibility = Visibility.Hidden;
+            button2.Visibility = Visibility.Hidden;
+            FullInfo.IsEnabled = false;
 
+            CarDealershipContext context = new CarDealershipContext();
+            var customerId = context.Customers.Where(x => x.Username == MainWindow.username).Select(x => x.Id).FirstOrDefault();
             SqlConnection conn = new SqlConnection(@"Server=.\SQLEXPRESS;Integrated security=true");
-            string showOrdersQuery = @"USE CarDealership SELECT
+            string showOrdersQuery = $@"USE CarDealership SELECT u.Id,
              Make , Model , ProductionYearStart AS [Production Year Start],
              ProductionYearEnd AS [Production Year End],
              PriceStart AS [Price Start],PriceEnd AS [Price End],
              BodyPaint AS Color,KmPassed AS [Km Passed],Transmission,Fuel,HorsePower AS [Horse Power],
-             EngineDisplacement AS [Engine Displacement] FROM Orders";
+             EngineDisplacement AS [Engine Displacement], CONCAT(o.FirstName,' ', o.LastName) AS [Taken By], o.PhoneNumber AS [Phone Number] FROM Orders AS u
+			 LEFT JOIN Owners AS o
+			 ON u.TakenBy_Id = o.Id
+             WHERE OrderedBy_Id = {customerId}";
             SqlCommand showOrders = new SqlCommand(showOrdersQuery, conn);
             conn.Open();
             SqlDataAdapter datAdapter = new SqlDataAdapter();
@@ -79,34 +92,58 @@ namespace CarDealership.App
             datAdapter.Fill(orders);
             dataGrid1.DataContext = orders.DefaultView;
             conn.Close();
-
-
         }
 
         private void AddNewCar_Click(object sender, RoutedEventArgs e)
         {
-            dataGrid.Visibility = Visibility.Hidden;            
+            dataGrid.Visibility = Visibility.Hidden;
+            button.Visibility = Visibility.Hidden;
+            button1.Visibility = Visibility.Hidden;
+            dataGrid1.Visibility = Visibility.Hidden;
             AddNewCarGrid.Visibility = Visibility.Visible;
+            button2.Visibility = Visibility.Hidden;
+            FullInfo.IsEnabled = false;
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
+            dataGrid.Visibility = Visibility.Hidden;
+            OrderGrid.Visibility = Visibility.Hidden;
+            dataGrid1.Visibility = Visibility.Visible;
+            button.Visibility = Visibility.Hidden;
+            button1.Visibility = Visibility.Hidden;
+            button2.Visibility = Visibility.Hidden;
+            FullInfo.IsEnabled = false;
 
+            SqlConnection conn = new SqlConnection(@"Server=.\SQLEXPRESS;Integrated security=true");
+            string showOrdersQuery = @"USE CarDealership SELECT u.Id,
+             Make , Model , ProductionYearStart AS [Production Year Start],
+             ProductionYearEnd AS [Production Year End],
+             PriceStart AS [Price Start],PriceEnd AS [Price End],
+             BodyPaint AS Color,KmPassed AS [Km Passed],Transmission,Fuel,HorsePower AS [Horse Power],
+             EngineDisplacement AS [Engine Displacement],CONCAT(o.FirstName,' ', o.LastName) AS [Taken By], o.PhoneNumber AS [Phone Number] FROM Orders AS u
+			 LEFT JOIN Owners AS o
+			 ON u.TakenBy_Id = o.Id";
+            SqlCommand showOrders = new SqlCommand(showOrdersQuery, conn);
+            conn.Open();
+            SqlDataAdapter datAdapter = new SqlDataAdapter();
+            datAdapter.SelectCommand = showOrders;
+            DataTable orders = new DataTable();
+            datAdapter.Fill(orders);
+            dataGrid1.DataContext = orders.DefaultView;
+            conn.Close();
         }
+
         private void comboBoxStartYear_Loaded(object sender, RoutedEventArgs e)
         {
             comboBoxEndYear.IsEnabled = false;
             comboBoxStartYear.Items.Add("Any");
             comboBoxStartYear.SelectedIndex = 0;
 
-
-
             for (int i = 2017; i >= 1950; i--)
             {
                 comboBoxStartYear.Items.Add("from " + i);
-
             }
-
         }
 
         private void comboBoxMake_Loaded(object sender, RoutedEventArgs e)
@@ -125,7 +162,6 @@ namespace CarDealership.App
 
         private void comboBoxMake_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
             if (comboBoxMake.SelectedItem.ToString() == "Audi")
             {
                 comboBoxModel.IsEnabled = true;
@@ -196,9 +232,6 @@ namespace CarDealership.App
                 comboBoxModel.Items.Clear();
                 comboBoxModel.IsEnabled = false;
             }
-
-
-
         }
 
         private void comboBoxStartYear_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -214,12 +247,10 @@ namespace CarDealership.App
                 comboBoxEndYear.SelectedIndex = 0;
                 for (int y = 2017; y >= int.Parse(resultString); y--)
                 {
-
                     comboBoxEndYear.Items.Add("to " + y);
                 }
-
-
             }
+
             if (comboBoxStartYear.SelectedIndex == 0)
             {
                 comboBoxEndYear.Items.Clear();
@@ -228,25 +259,25 @@ namespace CarDealership.App
         }
 
         private void FullInfo_Click(object sender, RoutedEventArgs e)
-        {
-            
+        {            
             if (dataGrid.SelectedIndex>-1)
             {
                 CarFullInfo form = new CarFullInfo();
-                form.Show();
-
-                
-            }
-            
-          
-
+                form.Show();               
+            }      
         }
 
         private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var car = dataGrid.SelectedItem;
-            string id = (dataGrid.SelectedCells[0].Column.GetCellContent(car) as TextBlock).Text;
-            carId = int.Parse(id);
+            button2.Visibility = Visibility.Visible;
+            FullInfo.IsEnabled = true;
+            try
+            {
+                var car = dataGrid.SelectedItem;
+                string id = (dataGrid.SelectedCells[0].Column.GetCellContent(car) as TextBlock).Text;
+                carId = int.Parse(id);
+            }
+            catch { }
           
         }
         public static int carId;
@@ -262,9 +293,7 @@ namespace CarDealership.App
                 string[] brand = line.Split(' ');
                 comboBoxMakeANC.Items.Add(brand[0]);
             }
-            comboBoxModelANC.IsEnabled = false;
-
-            
+            comboBoxModelANC.IsEnabled = false;            
         }
 
         private void comboBoxMakeANC_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -372,7 +401,6 @@ namespace CarDealership.App
 
         private void comboBoxFuelANC_Loaded(object sender, RoutedEventArgs e)
         {
-
             comboBoxFuelANC.Items.Add("Any");
             comboBoxFuelANC.SelectedIndex = 0;
             comboBoxFuelANC.Items.Add("Petrol");
@@ -388,16 +416,13 @@ namespace CarDealership.App
 
             for (int i = 2017; i >= 1950; i--)
             {
-
                 comboBoxYearMadeANC.Items.Add(i);
             }
-
         }
 
    
         private void buttonResetANC_Click(object sender, RoutedEventArgs e)
         {
-
             comboBoxMakeANC.SelectedIndex = 0;
             comboBoxTransANC.SelectedIndex = 0;
             comboBoxFuelANC.SelectedIndex = 0;
@@ -412,7 +437,6 @@ namespace CarDealership.App
             label27.Visibility = Visibility.Hidden;
             image.Visibility = Visibility.Hidden;
             photos.Clear();
-
         }
         List<string> photos = new List<string>();
         private void buttonAddImage_Click(object sender, RoutedEventArgs e)
@@ -445,9 +469,7 @@ namespace CarDealership.App
         }
 
         private void buttonSubmitANC_Click(object sender, RoutedEventArgs e)
-        {
-            
-
+        {          
             CarDealershipContext context = new CarDealershipContext();
             var seller = context.Owners.Where(x => x.Username == MainWindow.username).FirstOrDefault();
             int count = context.Cars.Count();
@@ -480,7 +502,7 @@ namespace CarDealership.App
                 newCar.Photos.Add(photo);
             }
             context.SaveChanges();
-
+            MessageBox.Show("Successfully Added!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
             comboBoxMakeANC.SelectedIndex = 0;
             comboBoxTransANC.SelectedIndex = 0;
@@ -496,7 +518,6 @@ namespace CarDealership.App
             label27.Visibility = Visibility.Hidden;
             image.Visibility = Visibility.Hidden;
             photos.Clear();
-
         }
 
         public byte[] imageToByteArray(BitmapImage imageIn)
@@ -512,8 +533,7 @@ namespace CarDealership.App
         {
             CarDealershipContext context = new CarDealershipContext();
 
-            var OrderByCustomer = context.Customers.Where(x => x.Username == MainWindow.username).FirstOrDefault();
-           
+            var OrderByCustomer = context.Customers.Where(x => x.Username == MainWindow.username).FirstOrDefault();           
 
             Order newOrder = new Order()
             {
@@ -530,14 +550,12 @@ namespace CarDealership.App
                 HorsePower = int.Parse(textBoxHP.Text),
                 EngineDisplacement = int.Parse(textBoxCC.Text),
                 OrderPlacedOn = DateTime.Now,
-                OrderedBy = OrderByCustomer,
-
+                OrderedBy = OrderByCustomer
             };
-
             
             context.Orders.Add(newOrder);
             context.SaveChanges();
-
+            MessageBox.Show("Successfully Added!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
             comboBoxMake.SelectedIndex = 0;
             comboBoxStartYear.SelectedIndex = 0;
@@ -549,9 +567,134 @@ namespace CarDealership.App
             textBoxKm.Clear();
             textBoxPriceFrom.Clear();
             textBoxPriceTo.Clear();
-
         }
 
-      
+        private void button_Click_1(object sender, RoutedEventArgs e)
+        {
+            CarDealershipContext context = new CarDealershipContext();
+            var owner = context.Owners.Where(x => x.Username == MainWindow.username).FirstOrDefault();
+            var order = context.Orders.Where(y => y.Id == orderId).FirstOrDefault();
+            order.TakenBy = owner;
+            context.SaveChanges();
+            MessageBox.Show("You've successfully taken the order", "Success!", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+
+            SqlConnection conn = new SqlConnection(@"Server=.\SQLEXPRESS;Integrated security=true");
+            string showOrdersQuery = @"USE CarDealership SELECT u.Id,
+             Make , Model , ProductionYearStart AS [Production Year Start],
+             ProductionYearEnd AS [Production Year End],
+             PriceStart AS [Price Start],PriceEnd AS [Price End],
+             BodyPaint AS Color,KmPassed AS [Km Passed],Transmission,Fuel,HorsePower AS [Horse Power],
+             EngineDisplacement AS [Engine Displacement],CONCAT(o.FirstName,' ', o.LastName) AS [Taken By], o.PhoneNumber AS [Phone Number] FROM Orders AS u
+			 LEFT JOIN Owners AS o
+			 ON u.TakenBy_Id = o.Id";
+            SqlCommand showOrders = new SqlCommand(showOrdersQuery, conn);
+            conn.Open();
+            SqlDataAdapter datAdapter = new SqlDataAdapter();
+            datAdapter.SelectCommand = showOrders;
+            DataTable orders = new DataTable();
+            datAdapter.Fill(orders);
+            dataGrid1.DataContext = orders.DefaultView;
+            conn.Close();
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            CarDealershipContext context = new CarDealershipContext();            
+            var order = context.Orders.Where(y => y.Id == orderId).FirstOrDefault();
+            MessageBoxResult result = MessageBox.Show("Are you sure?", "Removing order", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                context.Orders.Remove(order);
+                context.SaveChanges();
+                MessageBox.Show("Successfully removed!", "Success!", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            if (MainWindow.isOwner == false)
+            {
+                var customerId = context.Customers.Where(x => x.Username == MainWindow.username).Select(x => x.Id).FirstOrDefault();
+                SqlConnection conn = new SqlConnection(@"Server=.\SQLEXPRESS;Integrated security=true");
+                string showOrdersQuery = $@"USE CarDealership SELECT u.Id,
+             Make , Model , ProductionYearStart AS [Production Year Start],
+             ProductionYearEnd AS [Production Year End],
+             PriceStart AS [Price Start],PriceEnd AS [Price End],
+             BodyPaint AS Color,KmPassed AS [Km Passed],Transmission,Fuel,HorsePower AS [Horse Power],
+             EngineDisplacement AS [Engine Displacement], CONCAT(o.FirstName,' ', o.LastName) AS [Taken By], o.PhoneNumber AS [Phone Number] FROM Orders AS u
+			 LEFT JOIN Owners AS o
+			 ON u.TakenBy_Id = o.Id
+             WHERE OrderedBy_Id = {customerId}";
+                SqlCommand showOrders = new SqlCommand(showOrdersQuery, conn);
+                conn.Open();
+                SqlDataAdapter datAdapter = new SqlDataAdapter();
+                datAdapter.SelectCommand = showOrders;
+                DataTable orders = new DataTable();
+                datAdapter.Fill(orders);
+                dataGrid1.DataContext = orders.DefaultView;
+                conn.Close();
+            }
+            else
+            {
+                SqlConnection conn = new SqlConnection(@"Server=.\SQLEXPRESS;Integrated security=true");
+                string showOrdersQuery = @"USE CarDealership SELECT u.Id,
+             Make , Model , ProductionYearStart AS [Production Year Start],
+             ProductionYearEnd AS [Production Year End],
+             PriceStart AS [Price Start],PriceEnd AS [Price End],
+             BodyPaint AS Color,KmPassed AS [Km Passed],Transmission,Fuel,HorsePower AS [Horse Power],
+             EngineDisplacement AS [Engine Displacement],CONCAT(o.FirstName,' ', o.LastName) AS [Taken By], o.PhoneNumber AS [Phone Number] FROM Orders AS u
+			 LEFT JOIN Owners AS o
+			 ON u.TakenBy_Id = o.Id";
+                SqlCommand showOrders = new SqlCommand(showOrdersQuery, conn);
+                conn.Open();
+                SqlDataAdapter datAdapter = new SqlDataAdapter();
+                datAdapter.SelectCommand = showOrders;
+                DataTable orders = new DataTable();
+                datAdapter.Fill(orders);
+                dataGrid1.DataContext = orders.DefaultView;
+                conn.Close();
+            }
+        }
+        public static int orderId;
+        private void dataGrid1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(MainWindow.isOwner == false)            
+                button.Visibility = Visibility.Hidden;
+            button1.Visibility = Visibility.Visible;
+            button.Visibility = Visibility.Visible;
+
+            try
+            {
+                var order = dataGrid1.SelectedItem;
+                string id = (dataGrid1.SelectedCells[0].Column.GetCellContent(order) as TextBlock).Text;
+                orderId = int.Parse(id);
+            }
+            catch { }
+        }
+
+        private void button2_Click(object sender, RoutedEventArgs e)
+        {
+            CarDealershipContext context = new CarDealershipContext();
+            var car = context.Cars.Where(y => y.Id == carId).FirstOrDefault();
+            var carPhotos = context.CarPhotos.Where(y => y.Car.Id == car.Id).ToList();
+            MessageBoxResult result = MessageBox.Show("Are you sure?", "Removing Car", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                foreach(var photo in carPhotos)
+                {
+                    context.CarPhotos.Remove(photo);
+                }
+                context.Cars.Remove(car);
+                context.SaveChanges();
+                MessageBox.Show("Successfully removed!", "Success!", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+
+            SqlConnection conn = new SqlConnection(@"Server=.\SQLEXPRESS;Integrated security=true");
+            string showCarsQuery = @"USE CarDealership SELECT Id, Make, Model, ProductionYear AS [Production Year], Price, BodyPaint AS Color, KmPassed AS [Km Passed] FROM Cars";
+            SqlCommand showCars = new SqlCommand(showCarsQuery, conn);
+            conn.Open();
+            SqlDataAdapter datAdapter = new SqlDataAdapter();
+            datAdapter.SelectCommand = showCars;
+            DataTable cars = new DataTable();
+            datAdapter.Fill(cars);
+            dataGrid.DataContext = cars.DefaultView;
+            conn.Close();
+        }
     }
 }
