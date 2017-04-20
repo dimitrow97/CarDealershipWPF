@@ -269,7 +269,11 @@ namespace CarDealership.App
 
         private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            button2.Visibility = Visibility.Visible;
+            if (MainWindow.isOwner == true)
+            {
+                button2.Visibility = Visibility.Visible;
+            }
+            
             FullInfo.IsEnabled = true;
             try
             {
@@ -473,51 +477,61 @@ namespace CarDealership.App
             CarDealershipContext context = new CarDealershipContext();
             var seller = context.Owners.Where(x => x.Username == MainWindow.username).FirstOrDefault();
             int count = context.Cars.Count();
-            Car newCar = new Car()
+            try
             {
-                Make = comboBoxMakeANC.Text,
-                Model = comboBoxModelANC.Text,
-                ProductionYear = comboBoxYearMadeANC.Text,
-                Fuel = comboBoxFuelANC.Text,
-                Transmission = comboBoxTransANC.Text,
-                BodyPaint = textBoxColourANC.Text,
-                KmPassed = long.Parse(textBoxKmANC.Text),
-                Description = textBoxDescription.Text,
-                EngineDisplacement = int.Parse(textBoxCcANC.Text),
-                HorsePower = int.Parse(textBoxHpANC.Text),
-                Price = int.Parse(textBoxPriceANC.Text),
-                Seller = seller
-            };
-            seller.CarsForSale.Add(newCar);
-            context.Cars.Add(newCar);
-
-            for (int i = 0; i < photos.Count(); i++)
-            {
-                CarPhoto photo = new CarPhoto()
+                Car newCar = new Car()
                 {
-                    FileName = comboBoxMakeANC.Text + comboBoxModelANC.Text + "Car" + count + "." + (i + 1),
-                    Photo = imageToByteArray(new BitmapImage(new Uri(photos[i]))),
-                    Car = newCar
+                    Make = comboBoxMakeANC.Text,
+                    Model = comboBoxModelANC.Text,
+                    ProductionYear = comboBoxYearMadeANC.Text,
+                    Fuel = comboBoxFuelANC.Text,
+                    Transmission = comboBoxTransANC.Text,
+                    BodyPaint = textBoxColourANC.Text,
+                    KmPassed = long.Parse(textBoxKmANC.Text),
+                    Description = textBoxDescription.Text,
+                    EngineDisplacement = int.Parse(textBoxCcANC.Text),
+                    HorsePower = int.Parse(textBoxHpANC.Text),
+                    Price = int.Parse(textBoxPriceANC.Text),
+                    Seller = seller
                 };
-                newCar.Photos.Add(photo);
-            }
-            context.SaveChanges();
-            MessageBox.Show("Successfully Added!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                seller.CarsForSale.Add(newCar);
+                context.Cars.Add(newCar);
 
-            comboBoxMakeANC.SelectedIndex = 0;
-            comboBoxTransANC.SelectedIndex = 0;
-            comboBoxFuelANC.SelectedIndex = 0;
-            comboBoxYearMadeANC.SelectedIndex = 0;
-            textBoxPriceANC.Clear();
-            textBoxColourANC.Clear();
-            textBoxHpANC.Clear();
-            textBoxCcANC.Clear();
-            textBoxKmANC.Clear();
-            textBoxDescription.Clear();
-            picCount.Visibility = Visibility.Hidden;
-            label27.Visibility = Visibility.Hidden;
-            image.Visibility = Visibility.Hidden;
-            photos.Clear();
+                for (int i = 0; i < photos.Count(); i++)
+                {
+                    CarPhoto photo = new CarPhoto()
+                    {
+                        FileName = comboBoxMakeANC.Text + comboBoxModelANC.Text + "Car" + count + "." + (i + 1),
+                        Photo = imageToByteArray(new BitmapImage(new Uri(photos[i]))),
+                        Car = newCar
+                    };
+                    newCar.Photos.Add(photo);
+                }
+                context.SaveChanges();
+                MessageBox.Show("Successfully Added!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                comboBoxMakeANC.SelectedIndex = 0;
+                comboBoxTransANC.SelectedIndex = 0;
+                comboBoxFuelANC.SelectedIndex = 0;
+                comboBoxYearMadeANC.SelectedIndex = 0;
+                textBoxPriceANC.Clear();
+                textBoxColourANC.Clear();
+                textBoxHpANC.Clear();
+                textBoxCcANC.Clear();
+                textBoxKmANC.Clear();
+                textBoxDescription.Clear();
+                picCount.Visibility = Visibility.Hidden;
+                label27.Visibility = Visibility.Hidden;
+                image.Visibility = Visibility.Hidden;
+                photos.Clear();
+
+            }
+            catch (Exception)
+            {
+
+               MessageBox.Show("Please fill all the fields !");
+            }
+           
         }
 
         public byte[] imageToByteArray(BitmapImage imageIn)
@@ -533,40 +547,48 @@ namespace CarDealership.App
         {
             CarDealershipContext context = new CarDealershipContext();
 
-            var OrderByCustomer = context.Customers.Where(x => x.Username == MainWindow.username).FirstOrDefault();           
-
-            Order newOrder = new Order()
+            var OrderByCustomer = context.Customers.Where(x => x.Username == MainWindow.username).FirstOrDefault();
+            try
             {
-                Make = comboBoxMake.Text,
-                Model = comboBoxModel.Text,
-                ProductionYearStart = Regex.Match(comboBoxStartYear.SelectedItem.ToString(), @"\d+").Value,
-                ProductionYearEnd = Regex.Match(comboBoxEndYear.SelectedItem.ToString(), @"\d+").Value,
-                PriceStart = int.Parse(textBoxPriceFrom.Text),
-                PriceEnd = int.Parse(textBoxPriceTo.Text),
-                BodyPaint = textBoxColour.Text,
-                KmPassed = long.Parse(textBoxKm.Text),               
-                Transmission = comboBoxTrans.Text,
-                Fuel = comboBoxFuel.Text,
-                HorsePower = int.Parse(textBoxHP.Text),
-                EngineDisplacement = int.Parse(textBoxCC.Text),
-                OrderPlacedOn = DateTime.Now,
-                OrderedBy = OrderByCustomer
-            };
-            
-            context.Orders.Add(newOrder);
-            context.SaveChanges();
-            MessageBox.Show("Successfully Added!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                Order newOrder = new Order()
+                {
+                    Make = comboBoxMake.Text,
+                    Model = comboBoxModel.Text,
+                    ProductionYearStart = Regex.Match(comboBoxStartYear.SelectedItem.ToString(), @"\d+").Value,
+                    ProductionYearEnd = Regex.Match(comboBoxEndYear.SelectedItem.ToString(), @"\d+").Value,
+                    PriceStart = int.Parse(textBoxPriceFrom.Text),
+                    PriceEnd = int.Parse(textBoxPriceTo.Text),
+                    BodyPaint = textBoxColour.Text,
+                    KmPassed = long.Parse(textBoxKm.Text),
+                    Transmission = comboBoxTrans.Text,
+                    Fuel = comboBoxFuel.Text,
+                    HorsePower = int.Parse(textBoxHP.Text),
+                    EngineDisplacement = int.Parse(textBoxCC.Text),
+                    OrderPlacedOn = DateTime.Now,
+                    OrderedBy = OrderByCustomer
+                };
 
-            comboBoxMake.SelectedIndex = 0;
-            comboBoxStartYear.SelectedIndex = 0;
-            comboBoxTrans.SelectedIndex = 0;
-            comboBoxFuel.SelectedIndex = 0;
-            textBoxColour.Clear();
-            textBoxHP.Clear();
-            textBoxCC.Clear();
-            textBoxKm.Clear();
-            textBoxPriceFrom.Clear();
-            textBoxPriceTo.Clear();
+                context.Orders.Add(newOrder);
+                context.SaveChanges();
+                MessageBox.Show("Successfully Added!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                comboBoxMake.SelectedIndex = 0;
+                comboBoxStartYear.SelectedIndex = 0;
+                comboBoxTrans.SelectedIndex = 0;
+                comboBoxFuel.SelectedIndex = 0;
+                textBoxColour.Clear();
+                textBoxHP.Clear();
+                textBoxCC.Clear();
+                textBoxKm.Clear();
+                textBoxPriceFrom.Clear();
+                textBoxPriceTo.Clear();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Please fill all the fields !");
+            }
+          
         }
 
         private void button_Click_1(object sender, RoutedEventArgs e)
@@ -595,6 +617,8 @@ namespace CarDealership.App
             datAdapter.Fill(orders);
             dataGrid1.DataContext = orders.DefaultView;
             conn.Close();
+
+           
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
@@ -608,6 +632,7 @@ namespace CarDealership.App
                 context.SaveChanges();
                 MessageBox.Show("Successfully removed!", "Success!", MessageBoxButton.OK, MessageBoxImage.Information);
             }
+            
             if (MainWindow.isOwner == false)
             {
                 var customerId = context.Customers.Where(x => x.Username == MainWindow.username).Select(x => x.Id).FirstOrDefault();
@@ -654,10 +679,16 @@ namespace CarDealership.App
         public static int orderId;
         private void dataGrid1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(MainWindow.isOwner == false)            
+            if (MainWindow.isOwner == false)
+            {
                 button.Visibility = Visibility.Hidden;
-            button1.Visibility = Visibility.Visible;
-            button.Visibility = Visibility.Visible;
+                button1.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                button.Visibility = Visibility.Visible;
+                button1.Visibility = Visibility.Visible;
+            }
 
             try
             {

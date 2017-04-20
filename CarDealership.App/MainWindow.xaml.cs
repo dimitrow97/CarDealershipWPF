@@ -14,30 +14,30 @@ namespace CarDealership.App
         {
             InitializeComponent();            
             CarDealershipContext context = new CarDealershipContext();
-            context.Database.Initialize(force: true);
+            //context.Database.Initialize(force: true);
 
-            Owner zhu = new Owner()
-            {
-                FirstName = "Zhulian",
-                LastName = "Dimitrov",
-                Username = "dimitrow97",
-                Password = Encrypt("123456"),
-                Email = "dimitrow97@gmail.com",
-                PhoneNumber = "0883552353"
-            };
-            context.Owners.Add(zhu);
-            Owner paco = new Owner()
-            {
-                FirstName = "Plamen",
-                LastName = "Parushev",
-                Username = "paco",
-                Password = Encrypt("123456"),
-                Email = "paco@gmail.com",
-                PhoneNumber = "0883641267"
-            };
-            context.Owners.Add(paco);
+            //Owner zhu = new Owner()
+            //{
+            //    FirstName = "Zhulian",
+            //    LastName = "Dimitrov",
+            //    Username = "dimitrow97",
+            //    Password = Encrypt("123456"),
+            //    Email = "dimitrow97@gmail.com",
+            //    PhoneNumber = "0883552353"
+            //};
+            //context.Owners.Add(zhu);
+            //Owner paco = new Owner()
+            //{
+            //    FirstName = "Plamen",
+            //    LastName = "Parushev",
+            //    Username = "paco",
+            //    Password = Encrypt("123456"),
+            //    Email = "paco@gmail.com",
+            //    PhoneNumber = "0883641267"
+            //};
+            //context.Owners.Add(paco);
 
-            context.SaveChanges();
+            //context.SaveChanges();
         }
 
         public static bool isOwner;
